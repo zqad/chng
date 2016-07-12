@@ -1,0 +1,9 @@
+.*.sw?
+*~
+
+__pycache__/
+
+/build/
+/install/
+
+.requests_cache
