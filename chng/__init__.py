@@ -1,4 +1,4 @@
-# chng - Deploy ATLauncher mods
+# chng - Deploy ATLauncher modpacks
 #
 # Copyright (C) 2016  Jonas Eriksson
 #

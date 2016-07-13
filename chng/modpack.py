@@ -1,4 +1,4 @@
-# chng - Deploy ATLauncher mods
+# chng - Deploy ATLauncher modpacks
 #
 # Copyright (C) 2016  Jonas Eriksson
 #
@@ -57,8 +57,6 @@ class ModPack():
         tempdir = tempfile.TemporaryDirectory(prefix="chng-modpack")
         self._tempdir = Path(tempdir.name)
         self._base_directory = Path(directory)
-
-        self._mods_directory = self._base_directory / "mods"
 
         # Download the mod config xml
         config_url = self.BASE_URL + "packs/%s/versions/%s/Configs.xml" % \
