@@ -29,7 +29,9 @@ import argparse
 logging.basicConfig(level=logging.INFO)
 
 def run():
-    requests_cache.install_cache('.requests_cache')
+    # Initialize requests cache
+    home = os.path.expanduser("~")
+    requests_cache.install_cache(home + '/.chng_requests_cache')
 
     # Parse arguments
     parser = argparse.ArgumentParser(description='Download modpacks from ATLauncher')
