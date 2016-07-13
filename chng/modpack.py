@@ -54,17 +54,18 @@ class ModPack():
         self._name = name
         self._safe_name = re.sub("[^A-Za-z0-9]", "", name)
         self._version = version
-        tempdir = tempfile.TemporaryDirectory(prefix="chng-modpack")
-        self._tempdir = Path(tempdir.name)
         self._base_directory = Path(directory)
+        if not self._base_directory.exists():
+            self._base_directory.mkdir(mode=0o755, parents=True)
 
         # Download the mod config xml
         config_url = self.BASE_URL + "packs/%s/versions/%s/Configs.xml" % \
                                      (self._safe_name, version)
-        config_file = AutoUnpackableFile(config_url, str(self._tempdir),
-                                         pack_format="none")
+        config_file = AutoUnpackableFile(config_url, self._base_directory,
+                                         pack_format="none",
+                                         filename=".Configs.xml")
         config_file.ensure()
-        config_path = self._tempdir / "Configs.xml"
+        config_path = self._base_directory / ".Configs.xml"
 
         # Parse the XML and extract all elements
         tree = ElementTree.parse(str(config_path))
